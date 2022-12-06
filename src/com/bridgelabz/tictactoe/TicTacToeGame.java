@@ -75,9 +75,35 @@ public class TicTacToeGame {
 		if (locationForPlayGame < 10 && locationForPlayGame > 0) {
 			boardArray[locationForPlayGame] = player;
 			showBoard();
+			checkFreeSpace();
 			playerMakeMove();
 		} else {
 			System.out.println("Invalid Location.");
+		}
+	}
+	/*
+	 * UC - 5 Check for the free space before making the desired move
+	 * Extend UC-5 to check if the free space is available for the move
+	 * In case available make the move.
+	 */
+	public static void checkFreeSpace() {
+		//initialize variables
+		int numberOfFreeSpaces = 0;
+		boolean isSpaceAvailable = false;
+		//traversing the board using for loop
+		for(int i = 1; i < boardArray.length; i++) {
+			//condition for check free space available or not in board.
+			if((boardArray[i] == ' ')) {
+				isSpaceAvailable = true;
+				//increement
+				numberOfFreeSpaces++;	
+			}
+		}
+		if(isSpaceAvailable == false) {
+			System.out.println("Board is full.");
+			System.exit(0);
+		}else {
+			System.out.println("Free space is available. You have " + numberOfFreeSpaces + "moves left");
 		}
 	}
 	// Main method
@@ -88,5 +114,6 @@ public class TicTacToeGame {
 		chooseLetter();
 		showBoard();
 		playerMakeMove();
+		checkFreeSpace();
 	}
 }
