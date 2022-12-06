@@ -1,4 +1,5 @@
 package com.bridgelabz.tictactoe;
+import java.util.Random;
 /*
  * TicTacToe Player challenge computer.
  */
@@ -106,14 +107,31 @@ public class TicTacToeGame {
 			System.out.println("Free space is available. You have " + numberOfFreeSpaces + "moves left");
 		}
 	}
+	/*
+	 * UC-6 Check who plays first
+	 * Use Random to determine Heads or Tails and assign accordingly who starts first,
+	 * the computer or the user.
+	 */
+	public static void checkWhoPlayFirst() {
+		int toss = (int) Math.floor(Math.random() + 1.5);	//It gives random value between 1 to 2
+		System.out.println("Random Number: " + toss);
+		System.out.println("\nSelect coin 1 for Heads and 2 for Tails");
+		int coinSelect = scanner.nextInt();
+		if(coinSelect == toss) {
+			System.out.println("Player won the toss. Player plays first.\n");
+		}else {
+			System.out.println("Computer won the toss. Computer plays first.\n");
+		}
+	}
 	// Main method
 	public static void main(String[] args) {
 		System.out.println("Welcome To TicTacToe Game Program.\n");
 		// calling methods
+		checkWhoPlayFirst();
 		printBoard();
 		chooseLetter();
 		showBoard();
 		playerMakeMove();
-		checkFreeSpace();
+		checkFreeSpace();		
 	}
 }
