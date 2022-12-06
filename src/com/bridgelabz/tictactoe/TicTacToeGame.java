@@ -142,6 +142,21 @@ public class TicTacToeGame {
 			System.exit(0);
 		}
 	}
+	/*
+	 * UC - 8 Computer getting its turn would like the computer to play like me.
+	 */
+	public static void computerTurn() {
+		int computerMove;
+		//infinite loop
+		while(true) {
+			computerMove = (int) Math.floor(Math.random() * 10) % 9 + 1;
+			if(boardArray[computerMove] == ' ') {
+				break;
+			}
+		}
+		System.out.println("Computer select: " + computerMove);
+		boardArray[computerMove] = computer;
+	}
 	// Main method
 	public static void main(String[] args) {
 		System.out.println("Welcome To TicTacToe Game Program.\n");
@@ -149,10 +164,12 @@ public class TicTacToeGame {
 		checkWhoPlayFirst();
 		printBoard();
 		chooseLetter();
+		//infinite loop
 		while(true) {
 			playerMakeMove();
+			computerTurn();
 			showBoard();
-			checkFreeSpace();	
+			checkFreeSpace();
 			winner();
 		}	
 	}
