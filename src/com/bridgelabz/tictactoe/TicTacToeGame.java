@@ -143,7 +143,7 @@ public class TicTacToeGame {
 		}
 	}
 	/*
-	 * UC - 8 Computer getting its turn would like the computer to play like me.
+	 * UC - 8 Computer getting its turn would like the computer to play like player.
 	 */
 	public static void computerTurn() {
 		int computerMove;
