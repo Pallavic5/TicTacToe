@@ -1,4 +1,5 @@
 package com.bridgelabz.tictactoe;
+
 /*
  * TicTacToe Player challenge computer.
  */
@@ -54,6 +55,19 @@ public class TicTacToeGame {
 		}
 		scanner.close();
 	}
+	/*
+	 * UC-3 Player would like to see the board so player can choose the valid cells
+	 * to make move during turn. create method showBoard to display the current
+	 * Board.
+	 */
+	public static void showBoard() {
+		System.out.println();
+		System.out.println(boardArray[1] + " | " + boardArray[2] + " | " + boardArray[3]);
+		System.out.println("----------");
+		System.out.println(boardArray[4] + " | " + boardArray[5] + " | " + boardArray[6]);
+		System.out.println("----------");
+		System.out.println(boardArray[7] + " | " + boardArray[8] + " | " + boardArray[9]);
+	}
 
 	// Main method
 	public static void main(String[] args) {
@@ -61,5 +75,6 @@ public class TicTacToeGame {
 		// calling methods
 		printBoard();
 		chooseLetter();
+		showBoard();
 	}
 }
