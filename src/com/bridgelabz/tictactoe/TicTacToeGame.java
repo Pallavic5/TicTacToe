@@ -1,10 +1,8 @@
 package com.bridgelabz.tictactoe;
-
 /*
  * TicTacToe Player challenge computer.
  */
 import java.util.Scanner;
-
 /*
  * Create a TicTacToe Game Class
  * Create method for every use case and call that method from main method. 
@@ -13,8 +11,8 @@ public class TicTacToeGame {
 	// initialize char type array of size 10 to create a empty board.
 	static char[] boardArray = new char[10];
 	static char player, computer;
+	static int locationForPlayGame;
 	static Scanner scanner = new Scanner(System.in);
-
 	/*
 	 * UC - 1 As a player would like to start fresh by creating a tictactoe board.
 	 * Assign empty space to each element. 0th index is ignored to make it user
@@ -30,7 +28,6 @@ public class TicTacToeGame {
 		System.out.println("----------");
 		System.out.println(boardArray[7] + " | " + boardArray[8] + " | " + boardArray[9]);
 	}
-
 	/*
 	 * UC - 2 Ability to allow the player to choose a letter X or O Create a method
 	 * to allow player to input X or O and call from main
@@ -53,7 +50,6 @@ public class TicTacToeGame {
 		} else {
 			System.out.println("Invalid Choice...");
 		}
-		scanner.close();
 	}
 	/*
 	 * UC-3 Player would like to see the board so player can choose the valid cells
@@ -62,13 +58,28 @@ public class TicTacToeGame {
 	 */
 	public static void showBoard() {
 		System.out.println();
+		System.out.println("Display the Current Board to player for make move during turn.\n");
 		System.out.println(boardArray[1] + " | " + boardArray[2] + " | " + boardArray[3]);
 		System.out.println("----------");
 		System.out.println(boardArray[4] + " | " + boardArray[5] + " | " + boardArray[6]);
 		System.out.println("----------");
 		System.out.println(boardArray[7] + " | " + boardArray[8] + " | " + boardArray[9]);
 	}
-
+	/*
+	 * UC-4 Ability for user to make a move to a desired location in the board
+	 */
+	public static void playerMakeMove() {
+		//Select the index from 1 to 9 to make the move.
+		System.out.println("\nWhere would you like to play? (1 - 9)");
+		locationForPlayGame = scanner.nextInt();
+		if (locationForPlayGame < 10 && locationForPlayGame > 0) {
+			boardArray[locationForPlayGame] = player;
+			showBoard();
+			playerMakeMove();
+		} else {
+			System.out.println("Invalid Location.");
+		}
+	}
 	// Main method
 	public static void main(String[] args) {
 		System.out.println("Welcome To TicTacToe Game Program.\n");
@@ -76,5 +87,6 @@ public class TicTacToeGame {
 		printBoard();
 		chooseLetter();
 		showBoard();
+		playerMakeMove();
 	}
 }
