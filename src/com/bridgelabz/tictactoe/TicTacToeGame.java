@@ -123,6 +123,25 @@ public class TicTacToeGame {
 			System.out.println("Computer won the toss. Computer plays first.\n");
 		}
 	}
+	/*
+	 * UC-7 Player would expect the Tic Tac Toe App to determine after every
+	 * move the winner or the tie or change the turn
+	 */
+	public static void winner() {
+		//Here check all the side of board.
+		if((boardArray[1] == player && boardArray[2] == player && boardArray[3] == player 
+				|| boardArray[4] == player && boardArray[5] == player && boardArray[6] == player 
+				|| boardArray[7] == player && boardArray[8] == player && boardArray[9] == player 
+				|| boardArray[1] == player && boardArray[5] == player && boardArray[9] == player 
+				|| boardArray[3] == player && boardArray[5] == player && boardArray[7] == player 
+				|| boardArray[1] == player && boardArray[4] == player && boardArray[7] == player 
+				|| boardArray[2] == player && boardArray[5] == player && boardArray[8] == player 
+				|| boardArray[3] == player && boardArray[6] == player && boardArray[9] == player )) {
+			showBoard();
+			System.out.println("Player won the game.");
+			System.exit(0);
+		}
+	}
 	// Main method
 	public static void main(String[] args) {
 		System.out.println("Welcome To TicTacToe Game Program.\n");
@@ -130,8 +149,11 @@ public class TicTacToeGame {
 		checkWhoPlayFirst();
 		printBoard();
 		chooseLetter();
-		showBoard();
-		playerMakeMove();
-		checkFreeSpace();		
+		while(true) {
+			playerMakeMove();
+			showBoard();
+			checkFreeSpace();	
+			winner();
+		}	
 	}
 }
